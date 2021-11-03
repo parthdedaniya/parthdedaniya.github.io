@@ -127,6 +127,9 @@ h3 {
 /* Media Query */
 
 @media (max-width: 993px) {
+  .container-fluid {
+  padding: 7% 5%;
+}
   .navbar-brand {
     font-family: "Ubuntu", sans-serif;
     font-size: 2rem;
