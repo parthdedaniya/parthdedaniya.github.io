@@ -130,7 +130,7 @@ h3 {
 
 /* Media Query */
 
-@media (max-width: 993px) {
+@media (max-width: 768px) {
   .container-fluid {
   padding: 7% 5%;
 }
