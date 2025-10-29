@@ -11,7 +11,7 @@ export const useScrollAnimation = () => {
   }
 
   onMounted(() => {
-    if (process.client && elementRef.value) {
+    if (import.meta.client && elementRef.value) {
       const observer = new IntersectionObserver(observerCallback, {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'

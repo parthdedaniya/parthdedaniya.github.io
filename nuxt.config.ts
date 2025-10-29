@@ -24,7 +24,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: 'Parth - Full-Stack Developer specializing in Vue.js, Nuxt, NestJS, and AWS. Building elegant UIs and scalable backend systems.' },
+        { name: 'description', content: 'Parth - Full-Stack Developer specializing in Vue.js, Nuxt, NestJS, and AWS. Building elegant UIs and scalable backend systems.' },
         { name: 'keywords', content: 'Full-Stack Developer, Vue.js, Nuxt, NestJS, AWS, Frontend, Backend, Web Development' },
         { name: 'author', content: 'Parth' },
         { property: 'og:title', content: 'Parth - Full-Stack Developer' },
