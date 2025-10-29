@@ -1,7 +1,15 @@
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <div>
+    <Navbar />
+    <main class="container mx-auto px-4">
+      <Hero id="hero" />
+      <TechStack id="tech" />
+      <Projects id="projects" />
+      <Testimonials id="testimonials" />
+      <Contact id="contact" />
+    </main>
+    <Footer />
+  </div>
 </template>
 
 <script setup>
@@ -11,7 +19,7 @@ useHead({
     lang: 'en'
   },
   bodyAttrs: {
-    class: 'antialiased'
+    class: 'antialiased bg-white dark:bg-gray-900'
   }
 })
 </script>

@@ -1,84 +1,145 @@
 <template>
-  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+  <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 relative">
     <!-- Gradient glow effect -->
     <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent opacity-50"></div>
     
-    <div class="container-custom py-8">
-      <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-        <!-- Copyright -->
+    <div class="container mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <!-- Brand & Description -->
         <div 
-          class="text-sm text-gray-600 dark:text-gray-400 flex items-center space-x-2"
-          v-motion-fade-in-up
+          class="space-y-4"
+          v-motion-fade-visible
+          :delay="200"
         >
-          <span>© 2025 Parth — Built with</span>
-          <Heart class="w-4 h-4 text-primary-500 animate-pulse" />
-          <span>using Vue + Nuxt</span>
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+            <span class="text-primary-500">&lt;</span>Parth<span class="text-primary-500">/&gt;</span>
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Full-stack developer specializing in Vue.js, Nuxt, NestJS, and AWS. 
+            Building elegant UIs and scalable backend systems.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div 
+          class="space-y-4"
+          v-motion-fade-visible
+          :delay="400"
+        >
+          <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            Quick Links
+          </h4>
+          <nav class="flex flex-col space-y-2">
+            <a href="#hero" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
+              Home
+            </a>
+            <a href="#tech" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
+              Tech Stack
+            </a>
+            <a href="#projects" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
+              Projects
+            </a>
+            <a href="#testimonials" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
+              Testimonials
+            </a>
+            <a href="#contact" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
+              Contact
+            </a>
+          </nav>
         </div>
 
         <!-- Social Links -->
         <div 
-          class="flex items-center space-x-4"
-          v-motion-fade-in-up
-          :delay="200"
+          class="space-y-4"
+          v-motion-fade-visible
+          :delay="600"
         >
-          <a
-            v-for="social in socialLinks"
-            :key="social.name"
-            :href="social.href"
-            :aria-label="social.name"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="p-2 text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-all duration-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:scale-110"
-          >
-            <component :is="social.icon" class="w-5 h-5" />
-          </a>
+          <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            Connect With Me
+          </h4>
+          <div class="flex space-x-4">
+            <a
+              href="https://github.com/yourgithub"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              class="w-12 h-12 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
+            >
+              <Icon name="mdi:github" class="w-6 h-6 text-gray-700 dark:text-gray-300" />
+            </a>
+            <a
+              href="https://linkedin.com/in/yourprofile"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
+            >
+              <Icon name="mdi:linkedin" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            </a>
+            <a
+              href="mailto:youremail@example.com"
+              aria-label="Email"
+              class="w-12 h-12 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
+            >
+              <Icon name="mdi:email" class="w-6 h-6 text-red-600 dark:text-red-400" />
+            </a>
+            <a
+              href="https://twitter.com/yourhandle"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+              class="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 hover:bg-sky-200 dark:hover:bg-sky-900/50 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
+            >
+              <Icon name="mdi:twitter" class="w-6 h-6 text-sky-600 dark:text-sky-400" />
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- Back to top button -->
-      <Transition
-        enter-active-class="transition duration-300 ease-out"
-        enter-from-class="transform translate-y-2 opacity-0"
-        enter-to-class="transform translate-y-0 opacity-100"
-        leave-active-class="transition duration-200 ease-in"
-        leave-from-class="transform translate-y-0 opacity-100"
-        leave-to-class="transform translate-y-2 opacity-0"
+      <!-- Bottom Bar -->
+      <div 
+        class="pt-8 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0"
+        v-motion-fade-visible
+        :delay="800"
       >
-        <button
-          v-if="showBackToTop"
-          @click="scrollToTop"
-          class="fixed bottom-8 right-8 p-3 bg-primary-500 text-white rounded-full shadow-lg hover:bg-primary-600 hover:shadow-xl transition-all duration-200 hover:scale-110 glow-effect"
-          aria-label="Back to top"
-        >
-          <ChevronUp class="w-5 h-5" />
-        </button>
-      </Transition>
+        <!-- Copyright -->
+        <div class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
+          <span>© {{ currentYear }} Parth. All rights reserved.</span>
+        </div>
+
+        <!-- Built With -->
+        <div class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
+          <span>Built with</span>
+          <Icon name="mdi:heart" class="w-4 h-4 text-red-500 animate-pulse" />
+          <span>using Nuxt.js & TailwindCSS</span>
+        </div>
+      </div>
     </div>
+
+    <!-- Back to Top Button -->
+    <Transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="transform translate-y-2 opacity-0"
+      enter-to-class="transform translate-y-0 opacity-100"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="transform translate-y-0 opacity-100"
+      leave-to-class="transform translate-y-2 opacity-0"
+    >
+      <button
+        v-if="showBackToTop"
+        @click="scrollToTop"
+        class="fixed bottom-8 right-8 p-4 bg-primary-500 hover:bg-primary-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 z-50"
+        aria-label="Back to top"
+      >
+        <Icon name="mdi:arrow-up" class="w-6 h-6" />
+      </button>
+    </Transition>
   </footer>
 </template>
 
 <script setup>
-import { Heart, Github, Linkedin, Mail, ChevronUp } from 'lucide-vue-next'
-
 const showBackToTop = ref(false)
-
-const socialLinks = [
-  {
-    name: 'GitHub',
-    href: 'https://github.com/yourgithub',
-    icon: Github
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://linkedin.com/in/yourprofile',
-    icon: Linkedin
-  },
-  {
-    name: 'Email',
-    href: 'mailto:youremail@example.com',
-    icon: Mail
-  }
-]
+const currentYear = new Date().getFullYear()
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -99,3 +160,7 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
+
+<style scoped>
+/* Additional styles can be added here if needed */
+</style>
