@@ -113,18 +113,20 @@ const updateScrollProgress = () => {
   scrollProgress.value = (scrollTop / scrollHeight) * 100
 }
 
+// Close mobile menu when clicking outside
+const handleDocumentClick = (e) => {
+  if (!e.target.closest('nav') && isMobileMenuOpen.value) {
+    isMobileMenuOpen.value = false
+  }
+}
+
 onMounted(() => {
   window.addEventListener('scroll', updateScrollProgress)
-  
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('nav') && isMobileMenuOpen.value) {
-      isMobileMenuOpen.value = false
-    }
-  })
+  document.addEventListener('click', handleDocumentClick)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', updateScrollProgress)
+  document.removeEventListener('click', handleDocumentClick)
 })
 </script>

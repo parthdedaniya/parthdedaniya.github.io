@@ -10,13 +10,12 @@
 
 <script setup>
 // Enable smooth scrolling and handle scroll behavior
-onMounted(() => {
-  // Add smooth scrolling for anchor links
-  document.addEventListener('click', (e) => {
-    const target = e.target.closest('a[href^="#"]')
-    if (target) {
-      e.preventDefault()
-      const id = target.getAttribute('href').substring(1)
+const handleSmoothScrollClick = (e) => {
+  const target = e.target.closest('a[href^="#"]')
+  if (target) {
+    e.preventDefault()
+    const id = target.getAttribute('href')?.substring(1)
+    if (id) {
       const element = document.getElementById(id)
       if (element) {
         element.scrollIntoView({
@@ -25,6 +24,15 @@ onMounted(() => {
         })
       }
     }
-  })
+  }
+}
+
+onMounted(() => {
+  // Add smooth scrolling for anchor links
+  document.addEventListener('click', handleSmoothScrollClick)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleSmoothScrollClick)
 })
 </script>
