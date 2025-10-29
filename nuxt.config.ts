@@ -3,19 +3,17 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    '@vueuse/motion/nuxt',
-    '@vueuse/nuxt'
+    '@nuxt/motion',
+    'nuxt-icon'
   ],
-  colorMode: {
-    preference: 'dark',
-    fallback: 'dark',
-    hid: 'nuxt-color-mode-script',
-    globalName: '__NUXT_COLOR_MODE__',
-    componentName: 'ColorScheme',
-    classPrefix: '',
-    classSuffix: '',
-    storageKey: 'nuxt-color-mode'
+  // Optional: global settings for motion
+  motion: {
+    directives: {
+      'pop-visible': {
+        initial: { scale: 0, opacity: 0 },
+        visible: { scale: 1, opacity: 1, transition: { type: 'spring' } }
+      }
+    }
   },
   css: ['~/assets/css/main.css'],
   app: {

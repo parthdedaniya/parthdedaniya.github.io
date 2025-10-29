@@ -1,33 +1,32 @@
 <template>
-  <section id="contact" class="section-padding bg-white dark:bg-gray-800">
-    <div class="container-custom">
+  <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto">
       <!-- Section Title -->
       <div class="text-center mb-16">
         <h2 
-          class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
-          v-motion-fade-in-up
-          v-motion-visible-once
-        >
-          Let's <span class="text-gradient">Connect</span> 🚀
-        </h2>
-        
-        <p 
-          class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-          v-motion-fade-in-up
-          v-motion-visible-once
+          class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+          v-motion-slide-visible-bottom
           :delay="200"
         >
+          Let's Connect
+        </h2>
+        <p 
+          class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+          v-motion-fade-visible
+          :delay="400"
+        >
           Got a project or idea? Let's build something awesome together! 
-          I'm always excited to work on innovative projects and collaborate with fellow developers.
+          I'm always excited to work on innovative projects.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Contact Info & Social Links -->
+      <!-- Contact Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Contact Methods & Info -->
         <div 
           class="space-y-8"
-          v-motion-slide-visible-once-left
-          :delay="400"
+          v-motion-slide-visible-left
+          :delay="600"
         >
           <div class="space-y-6">
             <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
@@ -35,77 +34,97 @@
             </h3>
             <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
               I'm currently available for freelance projects and full-time opportunities. 
-              Whether you have a question, want to collaborate, or just want to say hi, 
-              I'd love to hear from you!
+              Whether you have a question or want to collaborate, I'd love to hear from you!
             </p>
           </div>
 
-          <!-- Contact Methods -->
+          <!-- Contact Cards -->
           <div class="space-y-4">
+            <!-- Email -->
             <a
-              v-for="(contact, index) in contactMethods"
-              :key="contact.type"
-              :href="contact.href"
-              :target="contact.external ? '_blank' : '_self'"
-              :rel="contact.external ? 'noopener noreferrer' : ''"
-              class="flex items-center space-x-4 p-4 rounded-2xl bg-gray-50 dark:bg-gray-700 hover:bg-primary-50 dark:hover:bg-primary-900/20 border border-gray-200 dark:border-gray-600 hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-300 group hover:scale-105"
-              v-motion-fade-in-up
-              v-motion-visible-once
-              :delay="500 + index * 100"
+              href="mailto:youremail@example.com"
+              class="flex items-center gap-4 p-6 bg-white dark:bg-gray-900 rounded-2xl hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              v-motion-slide-visible-left
+              :delay="800"
             >
-              <div 
-                class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                :class="contact.bgColor"
-              >
-                <component :is="contact.icon" :class="contact.iconColor" class="w-6 h-6" />
+              <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                <Icon name="mdi:email" class="w-7 h-7 text-blue-600 dark:text-blue-400" />
               </div>
               <div class="flex-1">
-                <h4 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200">
-                  {{ contact.title }}
-                </h4>
-                <p class="text-sm text-gray-500 dark:text-gray-400">
-                  {{ contact.description }}
-                </p>
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Email Me</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">youremail@example.com</p>
               </div>
-              <ExternalLink 
-                v-if="contact.external" 
-                class="w-4 h-4 text-gray-400 group-hover:text-primary-500 transition-colors duration-200" 
-              />
+              <Icon name="mdi:arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-primary-500 transition-colors duration-200" />
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              href="https://linkedin.com/in/yourprofile"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-4 p-6 bg-white dark:bg-gray-900 rounded-2xl hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              v-motion-slide-visible-left
+              :delay="900"
+            >
+              <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                <Icon name="mdi:linkedin" class="w-7 h-7 text-blue-600 dark:text-blue-400" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-1">LinkedIn</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Connect professionally</p>
+              </div>
+              <Icon name="mdi:arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-primary-500 transition-colors duration-200" />
+            </a>
+
+            <!-- GitHub -->
+            <a
+              href="https://github.com/yourgithub"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-4 p-6 bg-white dark:bg-gray-900 rounded-2xl hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              v-motion-slide-visible-left
+              :delay="1000"
+            >
+              <div class="w-14 h-14 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                <Icon name="mdi:github" class="w-7 h-7 text-gray-700 dark:text-gray-300" />
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-gray-900 dark:text-white mb-1">GitHub</h4>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Check out my code</p>
+              </div>
+              <Icon name="mdi:arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-primary-500 transition-colors duration-200" />
             </a>
           </div>
 
-          <!-- Social Links -->
-          <div class="pt-8 border-t border-gray-200 dark:border-gray-700">
-            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Follow Me
-            </h4>
-            <div class="flex space-x-4">
-              <a
-                v-for="social in socialLinks"
-                :key="social.name"
-                :href="social.href"
-                :aria-label="social.name"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 glow-effect"
-                :class="social.bgColor"
-                v-motion-fade-in-up
-                v-motion-visible-once
-                :delay="700"
-              >
-                <component :is="social.icon" :class="social.iconColor" class="w-5 h-5" />
-              </a>
-            </div>
+          <!-- Download Resume Button -->
+          <div 
+            class="pt-8"
+            v-motion-fade-visible
+            :delay="1100"
+          >
+            <a
+              href="/resume.pdf"
+              download
+              class="flex items-center justify-center gap-2 w-full px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <Icon name="mdi:download" class="w-5 h-5" />
+              <span>Download Resume</span>
+            </a>
           </div>
         </div>
 
         <!-- Contact Form -->
         <div 
-          class="card p-8"
-          v-motion-slide-visible-once-right
-          :delay="600"
+          class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl"
+          v-motion-slide-visible-right
+          :delay="700"
         >
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            Send a Message
+          </h3>
+          
           <form @submit.prevent="submitForm" class="space-y-6">
+            <!-- Name -->
             <div>
               <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Your Name
@@ -115,11 +134,12 @@
                 id="name"
                 v-model="form.name"
                 required
-                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
                 placeholder="John Doe"
               />
             </div>
 
+            <!-- Email -->
             <div>
               <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Email Address
@@ -129,11 +149,12 @@
                 id="email"
                 v-model="form.email"
                 required
-                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
                 placeholder="john@example.com"
               />
             </div>
 
+            <!-- Subject -->
             <div>
               <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Subject
@@ -143,11 +164,12 @@
                 id="subject"
                 v-model="form.subject"
                 required
-                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
                 placeholder="Let's work together!"
               />
             </div>
 
+            <!-- Message -->
             <div>
               <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Message
@@ -157,20 +179,20 @@
                 v-model="form.message"
                 required
                 rows="5"
-                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
+                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
                 placeholder="Tell me about your project..."
               ></textarea>
             </div>
 
+            <!-- Submit Button -->
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full btn-primary group"
-              :class="{ 'opacity-50 cursor-not-allowed': isSubmitting }"
+              class="w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl font-semibold transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span v-if="!isSubmitting">Send Message</span>
               <span v-else>Sending...</span>
-              <Send class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" />
+              <Icon name="mdi:send" class="w-5 h-5" />
             </button>
           </form>
 
@@ -183,10 +205,10 @@
             leave-from-class="transform scale-100 opacity-100"
             leave-to-class="transform scale-95 opacity-0"
           >
-            <div v-if="showSuccess" class="mt-4 p-4 bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-xl">
-              <div class="flex items-center space-x-2">
-                <CheckCircle class="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                <p class="text-sm text-primary-700 dark:text-primary-300">
+            <div v-if="showSuccess" class="mt-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl">
+              <div class="flex items-center gap-2">
+                <Icon name="mdi:check-circle" class="w-6 h-6 text-green-600 dark:text-green-400" />
+                <p class="text-sm text-green-700 dark:text-green-300 font-medium">
                   Thanks for your message! I'll get back to you soon.
                 </p>
               </div>
@@ -199,18 +221,6 @@
 </template>
 
 <script setup>
-import { 
-  Mail, 
-  Linkedin, 
-  Github, 
-  Twitter, 
-  ExternalLink, 
-  Send, 
-  CheckCircle,
-  MessageCircle,
-  Calendar
-} from 'lucide-vue-next'
-
 const form = ref({
   name: '',
   email: '',
@@ -221,68 +231,11 @@ const form = ref({
 const isSubmitting = ref(false)
 const showSuccess = ref(false)
 
-const contactMethods = [
-  {
-    type: 'email',
-    title: 'Email Me',
-    description: 'youremail@example.com',
-    href: 'mailto:youremail@example.com',
-    icon: Mail,
-    bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-    iconColor: 'text-blue-600 dark:text-blue-400',
-    external: false
-  },
-  {
-    type: 'linkedin',
-    title: 'LinkedIn',
-    description: 'Connect professionally',
-    href: 'https://linkedin.com/in/yourprofile',
-    icon: Linkedin,
-    bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-    iconColor: 'text-blue-600 dark:text-blue-400',
-    external: true
-  },
-  {
-    type: 'calendar',
-    title: 'Schedule a Call',
-    description: 'Book a 30-min chat',
-    href: 'https://calendly.com/yourprofile',
-    icon: Calendar,
-    bgColor: 'bg-green-100 dark:bg-green-900/30',
-    iconColor: 'text-green-600 dark:text-green-400',
-    external: true
-  }
-]
-
-const socialLinks = [
-  {
-    name: 'GitHub',
-    href: 'https://github.com/yourgithub',
-    icon: Github,
-    bgColor: 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600',
-    iconColor: 'text-gray-700 dark:text-gray-300'
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://linkedin.com/in/yourprofile',
-    icon: Linkedin,
-    bgColor: 'bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50',
-    iconColor: 'text-blue-600 dark:text-blue-400'
-  },
-  {
-    name: 'Twitter',
-    href: 'https://twitter.com/yourhandle',
-    icon: Twitter,
-    bgColor: 'bg-sky-100 dark:bg-sky-900/30 hover:bg-sky-200 dark:hover:bg-sky-900/50',
-    iconColor: 'text-sky-600 dark:text-sky-400'
-  }
-]
-
 const submitForm = async () => {
   isSubmitting.value = true
   
   try {
-    // Simulate form submission
+    // Simulate form submission - Replace with actual API call
     await new Promise(resolve => setTimeout(resolve, 1000))
     
     // Reset form
@@ -306,10 +259,5 @@ const submitForm = async () => {
 </script>
 
 <style scoped>
-.text-gradient {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* Additional styles can be added here if needed */
 </style>
