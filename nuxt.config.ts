@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  ssr: false, // Disable server-side rendering for static generation
+  target: 'static',
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/motion',
