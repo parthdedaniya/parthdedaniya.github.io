@@ -7,7 +7,7 @@ A visually stunning, animated, and responsive developer portfolio website built 
 - **Framework**: Nuxt 3
 - **Frontend**: Vue 3 with Composition API
 - **Styling**: TailwindCSS with custom green palette
-- **Animations**: @vueuse/motion (Framer Motion for Vue)
+- **Animations**: @formkit/auto-animate with custom directives
 - **Icons**: Lucide Vue Next
 - **Dark Mode**: @nuxtjs/color-mode with persistence
 - **TypeScript**: Full TypeScript support

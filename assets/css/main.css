@@ -94,4 +94,71 @@
   .v-motion {
     will-change: transform, opacity;
   }
+
+  /* Animation base styles */
+  .animate-on-scroll {
+    opacity: 0;
+    transition: all 0.6s ease-out;
+    will-change: transform, opacity;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+  }
+
+  /* Slide animations */
+  .animate-on-scroll.slide-bottom {
+    transform: translateY(50px);
+  }
+
+  .animate-on-scroll.slide-bottom.is-visible {
+    transform: translateY(0);
+  }
+
+  .animate-on-scroll.slide-left {
+    transform: translateX(-50px);
+  }
+
+  .animate-on-scroll.slide-left.is-visible {
+    transform: translateX(0);
+  }
+
+  .animate-on-scroll.slide-right {
+    transform: translateX(50px);
+  }
+
+  .animate-on-scroll.slide-right.is-visible {
+    transform: translateX(0);
+  }
+
+  /* Fade animations */
+  .animate-on-scroll.fade-in {
+    opacity: 0;
+  }
+
+  .animate-on-scroll.fade-in.is-visible {
+    opacity: 1;
+  }
+
+  .animate-on-scroll.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .animate-on-scroll.fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Pop animation */
+  .animate-on-scroll.pop {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  .animate-on-scroll.pop.is-visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
 }
