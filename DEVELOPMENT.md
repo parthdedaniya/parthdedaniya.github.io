@@ -97,7 +97,7 @@ The development server will start at `http://localhost:3000`
 
 ### Common Issues
 
-1. **Animations not working**: Check that `@vueuse/motion` is properly installed
+1. **Animations not working**: Check that `@formkit/auto-animate` is properly installed
 2. **Dark mode not persisting**: Verify `@nuxtjs/color-mode` configuration
 3. **Styles not applying**: Check Tailwind CSS configuration and imports
 4. **Build errors**: Ensure all dependencies are installed with `npm install`
