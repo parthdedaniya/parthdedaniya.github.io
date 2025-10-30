@@ -3,12 +3,16 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false, // Disable server-side rendering for static generation
   target: 'static',
+  nitro: {
+    preset: 'github_pages',
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     'nuxt-icon'
   ],
   css: ['~/assets/css/main.css'],
   app: {
+    baseURL: '/', // Root path for user pages (username.github.io)
     head: {
       title: 'Parth - Full-Stack Developer',
       meta: [
