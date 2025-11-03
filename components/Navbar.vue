@@ -1,14 +1,14 @@
 <template>
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700">
+  <nav class="fixed top-0 left-0 right-0 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-[#121212]/90 transition-colors duration-300" style="z-index: 50;">
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
         <a 
           href="#hero" 
-          class="text-2xl font-bold text-gray-900 dark:text-white hover:text-primary-500 transition-colors duration-200"
+          class="text-2xl font-bold text-gray-900 dark:text-white hover:text-primary-500 transition-colors duration-200 no-underline"
           v-motion-slide-visible-left
         >
-          <span class="text-primary-500">&lt;</span>Parth<span class="text-primary-500">/&gt;</span>
+          Parth Dedaniya
         </a>
 
         <!-- Desktop Navigation -->
@@ -32,37 +32,41 @@
             Projects
           </a>
           <a 
-            href="#testimonials"
-            class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
-          >
-            Testimonials
-          </a>
-          <a 
             href="#contact"
             class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
           >
             Contact
           </a>
           
+          <!-- Theme Switcher -->
+          <ThemeSwitcher />
+          
           <!-- Download Resume Button -->
           <a
-            href="/resume.pdf"
-            download
+            href="https://drive.google.com/file/d/1BJq_tm4MNaqi4av45SH2IQbOyNO65gx-/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             class="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"
           >
-            Download Resume
+            View Resume
           </a>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <button
-          @click="toggleMobileMenu"
-          class="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 transition-colors duration-200"
-          v-motion-fade-visible
-        >
-          <Icon v-if="!isMobileMenuOpen" name="mdi:menu" class="w-6 h-6" />
-          <Icon v-else name="mdi:close" class="w-6 h-6" />
-        </button>
+        <!-- Mobile: Theme Switcher + Menu Button -->
+        <div class="md:hidden flex items-center gap-4">
+          <!-- Theme Switcher (Always Visible) -->
+          <ThemeSwitcher />
+          
+          <!-- Mobile Menu Button -->
+          <button
+            @click="toggleMobileMenu"
+            class="p-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 transition-colors duration-200"
+            v-motion-fade-visible
+          >
+            <Icon v-if="!isMobileMenuOpen" name="mdi:menu" class="w-6 h-6" />
+            <Icon v-else name="mdi:close" class="w-6 h-6" />
+          </button>
+        </div>
       </div>
 
       <!-- Mobile Navigation -->
@@ -98,25 +102,20 @@
               Projects
             </a>
             <a
-              href="#testimonials"
-              @click="closeMobileMenu"
-              class="px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200"
-            >
-              Testimonials
-            </a>
-            <a
               href="#contact"
               @click="closeMobileMenu"
               class="px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200"
             >
               Contact
             </a>
+            
             <a
-              href="/resume.pdf"
-              download
+              href="https://drive.google.com/file/d/1BJq_tm4MNaqi4av45SH2IQbOyNO65gx-/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               class="mx-4 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg font-medium text-center transition-colors duration-200"
             >
-              Download Resume
+              View Resume
             </a>
           </div>
         </div>

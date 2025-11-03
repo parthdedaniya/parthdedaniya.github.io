@@ -1,117 +1,36 @@
 <template>
-  <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 relative">
-    <!-- Gradient glow effect -->
-    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent opacity-50"></div>
+  <footer class="relative overflow-hidden">
+    <!-- Animated gradient line at top -->
+    <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-primary-500 to-transparent"></div>
     
-    <div class="container mx-auto px-4 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-        <!-- Brand & Description -->
-        <div 
-          class="space-y-4"
-          v-motion-fade-visible
-          :delay="200"
-        >
-          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
-            <span class="text-primary-500">&lt;</span>Parth<span class="text-primary-500">/&gt;</span>
-          </h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-            Full-stack developer specializing in Vue.js, Nuxt, NestJS, and AWS. 
-            Building elegant UIs and scalable backend systems.
+    <!-- Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col items-center justify-center gap-4">
+        <!-- Main footer text -->
+        <div class="text-center">
+          <p class="text-gray-700 dark:text-gray-300 text-sm font-medium">
+            © {{ currentYear }} Parth Dedaniya
           </p>
         </div>
 
-        <!-- Quick Links -->
-        <div 
-          class="space-y-4"
-          v-motion-fade-visible
-          :delay="400"
-        >
-          <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-            Quick Links
-          </h4>
-          <nav class="flex flex-col space-y-2">
-            <a href="#hero" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
-              Home
-            </a>
-            <a href="#tech" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
-              Tech Stack
-            </a>
-            <a href="#projects" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
-              Projects
-            </a>
-            <a href="#testimonials" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
-              Testimonials
-            </a>
-            <a href="#contact" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors duration-200">
-              Contact
-            </a>
-          </nav>
-        </div>
-
-        <!-- Social Links -->
-        <div 
-          class="space-y-4"
-          v-motion-fade-visible
-          :delay="600"
-        >
-          <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-            Connect With Me
-          </h4>
-          <div class="flex space-x-4">
-            <a
-              href="https://github.com/yourgithub"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              class="w-12 h-12 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
-            >
-              <Icon name="mdi:github" class="w-6 h-6 text-gray-700 dark:text-gray-300" />
-            </a>
-            <a
-              href="https://linkedin.com/in/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
-            >
-              <Icon name="mdi:linkedin" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
-            </a>
-            <a
-              href="mailto:youremail@example.com"
-              aria-label="Email"
-              class="w-12 h-12 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
-            >
-              <Icon name="mdi:email" class="w-6 h-6 text-red-600 dark:text-red-400" />
-            </a>
-            <a
-              href="https://twitter.com/yourhandle"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-              class="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 hover:bg-sky-200 dark:hover:bg-sky-900/50 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
-            >
-              <Icon name="mdi:twitter" class="w-6 h-6 text-sky-600 dark:text-sky-400" />
-            </a>
+        <!-- Decorative elements -->
+        <div class="flex items-center gap-6">
+          <!-- Animated dots -->
+          <div class="flex gap-2">
+            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <div class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" style="animation-delay: 0.2s;"></div>
+            <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse" style="animation-delay: 0.4s;"></div>
           </div>
-        </div>
-      </div>
-
-      <!-- Bottom Bar -->
-      <div 
-        class="pt-8 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0"
-        v-motion-fade-visible
-        :delay="800"
-      >
-        <!-- Copyright -->
-        <div class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
-          <span>© {{ currentYear }} Parth. All rights reserved.</span>
-        </div>
-
-        <!-- Built With -->
-        <div class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
-          <span>Built with</span>
-          <Icon name="mdi:heart" class="w-4 h-4 text-red-500 animate-pulse" />
-          <span>using Nuxt.js & TailwindCSS</span>
+          
+          <!-- Interactive emoji -->
+          <span class="text-lg cursor-pointer hover:scale-125 hover:rotate-12 transition-all duration-300">✨</span>
+          
+          <!-- Animated dots -->
+          <div class="flex gap-2">
+            <div class="w-2 h-2 rounded-full bg-blue-500 animate-pulse" style="animation-delay: 0.1s;"></div>
+            <div class="w-2 h-2 rounded-full bg-purple-500 animate-pulse" style="animation-delay: 0.3s;"></div>
+            <div class="w-2 h-2 rounded-full bg-pink-500 animate-pulse" style="animation-delay: 0.5s;"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -128,10 +47,10 @@
       <button
         v-if="showBackToTop"
         @click="scrollToTop"
-        class="fixed bottom-8 right-8 p-4 bg-primary-500 hover:bg-primary-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 z-50"
+        class="fixed bottom-8 right-8 p-4 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full shadow-2xl hover:shadow-primary-500/50 transition-all duration-300 hover:scale-110 z-50 group backdrop-blur-sm"
         aria-label="Back to top"
       >
-        <Icon name="mdi:arrow-up" class="w-6 h-6" />
+        <Icon name="mdi:arrow-up" class="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
       </button>
     </Transition>
   </footer>
@@ -162,5 +81,5 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Additional styles can be added here if needed */
+/* Clean minimal footer */
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <section id="tech" class="py-20 bg-white dark:bg-gray-900">
-    <div class="max-w-6xl mx-auto">
+  <section id="tech" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Title -->
       <div class="text-center mb-16">
         <h2 
@@ -89,6 +89,11 @@ const technologies = [
     category: 'JavaScript Runtime'
   },
   {
+    name: 'Express.js',
+    icon: 'simple-icons:express',
+    category: 'Backend Framework'
+  },
+  {
     name: 'DynamoDB',
     icon: 'logos:aws-dynamodb',
     category: 'NoSQL Database'
@@ -99,6 +104,11 @@ const technologies = [
     category: 'NoSQL Database'
   },
   {
+    name: 'PostgreSQL',
+    icon: 'logos:postgresql',
+    category: 'SQL Database'
+  },
+  {
     name: 'AWS',
     icon: 'logos:aws',
     category: 'Cloud Platform'
@@ -107,23 +117,35 @@ const technologies = [
     name: 'TailwindCSS',
     icon: 'logos:tailwindcss-icon',
     category: 'CSS Framework'
+  },
+  {
+    name: 'TypeScript',
+    icon: 'logos:typescript-icon',
+    category: 'Programming Language'
+  },
+  {
+    name: 'Firebase',
+    icon: 'logos:firebase',
+    category: 'Backend Service'
   }
 ]
 
 const additionalSkills = [
-  'TypeScript',
+  'JavaScript',
+  'C',
+  'C++',
+  'Java',
   'GraphQL',
   'REST APIs',
-  'WebRTC',
-  'Socket.io',
-  'Redis',
+  'WebAssembly',
   'Docker',
   'Git',
-  'CI/CD',
+  'Vite',
+  'SDK Development',
+  'Cedar Policy Language',
   'Lambda',
   'S3',
   'CloudFront',
-  'PostgreSQL',
   'Microservices',
   'Serverless'
 ]

@@ -1,17 +1,17 @@
 <template>
-  <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="max-w-7xl mx-auto">
+  <section id="projects" class="py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <!-- Section Title -->
       <div class="text-center mb-16">
         <h2 
-          class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+          class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 gradient-text"
           v-motion-slide-visible-bottom
           :delay="200"
         >
-          Featured Projects
+          Projects
         </h2>
         <p 
-          class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+          class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           v-motion-fade-visible
           :delay="400"
         >
@@ -24,90 +24,75 @@
         <div
           v-for="(project, index) in projects"
           :key="project.id"
-          class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 group"
+          class="project-card group"
+          :ref="el => projectCardRefs[index] = el"
           v-motion-slide-visible-bottom
           :delay="600 + index * 150"
         >
-          <!-- Project Image/Placeholder -->
-          <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600 relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <Icon :name="project.icon" class="w-20 h-20 text-white opacity-80" />
-            </div>
-            <!-- Overlay on hover -->
-            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-              <a
-                v-if="project.liveUrl"
-                :href="project.liveUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-3 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-all duration-200 hover:scale-110"
-                title="View Live Demo"
-              >
-                <Icon name="mdi:web" class="w-6 h-6 text-white" />
-              </a>
-              <a
-                v-if="project.githubUrl"
-                :href="project.githubUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-3 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-all duration-200 hover:scale-110"
-                title="View GitHub Repo"
-              >
-                <Icon name="mdi:github" class="w-6 h-6 text-white" />
-              </a>
-            </div>
-          </div>
-
           <!-- Project Content -->
-          <div class="p-6">
+          <div class="p-8 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black relative flex flex-col h-full border-l-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl" :style="{ borderColor: project.color }">
+            <!-- Project Icon with colored background -->
+            <div class="mb-6">
+              <div class="w-16 h-16 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" :style="{ backgroundColor: project.color + '20' }">
+                <Icon :name="project.icon" class="w-8 h-8 transition-all duration-300" :style="{ color: project.color }" />
+              </div>
+            </div>
+            
             <!-- Title -->
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-500 transition-colors duration-200">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-200 leading-tight">
               {{ project.title }}
             </h3>
 
-            <!-- Description -->
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+            <!-- Description - flex-grow to push content below -->
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">
               {{ project.description }}
             </p>
 
-            <!-- Contribution/Role -->
-            <p class="text-gray-700 dark:text-gray-300 text-sm mb-4 italic">
-              {{ project.contribution }}
-            </p>
+            <!-- Bottom section - stays at bottom -->
+            <div class="mt-auto">
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  v-for="tech in project.technologies"
+                  :key="tech"
+                  class="px-3 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full"
+                >
+                  {{ tech }}
+                </span>
+              </div>
 
-            <!-- Tech Tags -->
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span
-                v-for="tech in project.technologies"
-                :key="tech"
-                class="px-3 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full"
-              >
-                {{ tech }}
-              </span>
-            </div>
-
-            <!-- Links -->
-            <div class="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
-              <a
-                v-if="project.liveUrl"
-                :href="project.liveUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
-              >
-                <Icon name="mdi:web" class="w-4 h-4" />
-                <span>Live Demo</span>
-              </a>
-              <a
-                v-if="project.githubUrl"
-                :href="project.githubUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
-              >
-                <Icon name="mdi:github" class="w-4 h-4" />
-                <span>GitHub</span>
-              </a>
+              <!-- Links -->
+              <div class="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <template v-if="project.liveUrl || project.githubUrl">
+                  <a
+                    v-if="project.liveUrl"
+                    :href="project.liveUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
+                  >
+                    <Icon name="mdi:web" class="w-4 h-4" />
+                    <span>Live Demo</span>
+                  </a>
+                  <a
+                    v-if="project.githubUrl"
+                    :href="project.githubUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
+                  >
+                    <Icon name="mdi:github" class="w-4 h-4" />
+                    <span>GitHub</span>
+                  </a>
+                </template>
+                <div
+                  v-else
+                  class="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-lg text-sm font-medium cursor-not-allowed"
+                >
+                  <Icon name="mdi:lock" class="w-4 h-4" />
+                  <span>Private Project</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -120,10 +105,10 @@
         :delay="1200"
       >
         <a
-          href="https://github.com/yourgithub"
+          href="https://github.com/parthdedaniya"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-8 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 hover:border-primary-500 dark:hover:border-primary-500 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+          class="inline-flex items-center gap-2 px-8 py-3 bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 hover:border-primary-500 dark:hover:border-primary-500 rounded-lg font-semibold transition-all duration-200 hover:scale-105 no-underline"
         >
           <span>View More on GitHub</span>
           <Icon name="mdi:arrow-right" class="w-5 h-5" />
@@ -134,55 +119,84 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+
+const projectCardRefs = ref([])
+
 const projects = [
   {
     id: 1,
-    title: 'SmartChat App',
-    description: 'Real-time chat platform like Snapchat with advanced features.',
-    contribution: 'Built with Nuxt + NestJS. Includes friend discovery algorithm, trust-based voice/video unlock, and real-time messaging with WebRTC.',
-    technologies: ['Vue 3', 'NestJS', 'WebRTC', 'DynamoDB', 'Socket.io'],
-    icon: 'mdi:message-text',
-    liveUrl: 'https://smartchat-demo.com',
-    githubUrl: 'https://github.com/yourgithub/smartchat'
+    title: 'Cedar Authorization Tool',
+    description: 'Comprehensive authorization management system inspired by AWS Cedar, featuring centralized policy and entity management, real-time access evaluation, and fine-grained control for modern applications.',
+    technologies: ['Nuxt.js', 'Express', 'DynamoDB', 'AWS', 'Cedar'],
+    icon: 'mdi:shield-check-outline',
+    color: '#22c55e', // Green
+    liveUrl: null,
+    githubUrl: null
   },
   {
     id: 2,
-    title: 'Cedar Authorization Tool',
-    description: 'Visual policy editor for Cedar authorization engine.',
-    contribution: 'Integrated Cedar WASM with Monaco Editor in Vue. Provides real-time policy validation and testing interface.',
-    technologies: ['Vue 3', 'WASM', 'Cedar', 'Monaco Editor', 'TypeScript'],
-    icon: 'mdi:shield-lock',
-    liveUrl: 'https://cedar-auth-tool.com',
-    githubUrl: 'https://github.com/yourgithub/cedar-auth'
+    title: 'Cedar Policy Playground',
+    description: 'Interactive playground to visualize and test Cedar authorization policies against entities and schemas with live validation and syntax highlighting.',
+    technologies: ['Nuxt.js', 'WebAssembly', 'Cedar', 'DynamoDB', 'Analytics'],
+    icon: 'mdi:code-braces',
+    color: '#3b82f6', // Blue
+    liveUrl: 'https://playground.openparc.dev/',
+    githubUrl: null
   },
   {
     id: 3,
-    title: 'OrgFlow',
-    description: 'Role-based organization management system.',
-    contribution: 'Built invite workflows with SQS background task processing. Automated team onboarding and permission handling.',
-    technologies: ['NestJS', 'AWS SQS', 'DynamoDB', 'Vue.js', 'Lambda'],
-    icon: 'mdi:account-group',
-    liveUrl: 'https://orgflow-app.com',
-    githubUrl: 'https://github.com/yourgithub/orgflow'
-  },
-  {
-    id: 4,
-    title: 'E-Commerce Platform',
-    description: 'Full-featured online shopping platform with payment integration.',
-    contribution: 'Developed the entire frontend and integrated Stripe for payments. Implemented cart management and order tracking.',
-    technologies: ['Nuxt 3', 'Stripe', 'PostgreSQL', 'Prisma'],
-    icon: 'mdi:shopping',
-    liveUrl: 'https://ecommerce-demo.com',
-    githubUrl: 'https://github.com/yourgithub/ecommerce'
+    title: 'HR Management System',
+    description: 'Comprehensive HRMS application supporting employee registration, profile management, leave requests, and department management with secure authentication and drag-and-drop functionality.',
+    technologies: ['Vue.js', 'Firebase'],
+    icon: 'mdi:account-group-outline',
+    color: '#f59e0b', // Amber
+    liveUrl: null,
+    githubUrl: 'https://github.com/parthatsimform/HR-Management-Final-Project/tree/development'
   }
 ]
+
+// 3D card tilt effect on mouse move (subtle)
+onMounted(() => {
+  projectCardRefs.value.forEach((card) => {
+    if (!card) return
+    
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
+      
+      const rotateX = (y - centerY) / 20
+      const rotateY = (centerX - x) / 20
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`
+    })
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)'
+    })
+  })
+})
 </script>
 
 <style scoped>
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.project-card {
+  border-radius: 1rem;
+  overflow: visible;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  z-index: 10;
 }
 </style>
