@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="w-full overflow-x-hidden bg-white dark:bg-[#121212] transition-colors duration-300">
+    <CustomCursor />
     <Navbar />
-    <main class="container mx-auto px-4">
+    <main class="w-full">
       <Hero id="hero" />
       <TechStack id="tech" />
       <Projects id="projects" />
-      <Testimonials id="testimonials" />
       <Contact id="contact" />
     </main>
     <Footer />
@@ -13,13 +13,20 @@
 </template>
 
 <script setup>
+const { initTheme } = useTheme()
+
+// Initialize theme on mount
+onMounted(() => {
+  initTheme()
+})
+
 // Global app configuration
 useHead({
   htmlAttrs: {
     lang: 'en'
   },
   bodyAttrs: {
-    class: 'antialiased bg-white dark:bg-gray-900'
+    class: 'antialiased'
   }
 })
 </script>
